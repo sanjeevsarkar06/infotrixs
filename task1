@@ -1,0 +1,65 @@
+Task Completion Report: Deploying WordPress and MySQL on a Single EC2 Instance
+
+We launched an EC2 instance with the desired specifications.
+
+Installed MySQL using the package manager, and set a secure root password.
+
+I created a database and user for WordPress.
+
+Downloaded and configured WordPress files.
+
+Edited wp-config.php with database details and secret keys.
+
+Installed and configured Apache as the web server.
+
+Accessed the WordPress site using the public IP address.
+
+
+
+Resources Used:
+
+AWS EC2 Documentation
+MySQL Documentation
+WordPress Download
+WordPress Configuration Guide
+Apache HTTP Server Documentation
+Monolithic architecture 
+
+
+Below are the commands used to complete the task of deploying WordPress and MySQL on a single EC2 instance
+
+Perform Ubuntu 22.04 update-> sudo apt update && sudo apt upgrade
+
+Install Apache & PHP for WordPress-> sudo apt install apache2
+sudo systemctl enable apache2
+
+
+Check status:-> systemctl status apache2
+
+
+Install PHP version 8-> sudo apt install php php-cli php-mysql
+
+
+ Install  MySQL-> sudo apt install mysql-server
+
+Create Database for WordPress-> sudo mysql -u root -p
+                            ->CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'your_password';
+                            ->CREATE DATABASE new_db;
+                            ->GRANT ALL PRIVILEGES ON new_db.* TO 'new_user'@'localhost';
+                            ->FLUSH PRIVILEGES;
+
+
+Install WordPress on Ubuntu ->sudo apt install wget unzip
+
+Download WordPress:-> wget https://wordpress.org/latest.zip
+
+Extract file:->sudo unzip latest.zip
+
+Move it to the web folder:->sudo mv wordpress/ /var/www/html/
+
+Change file permission->sudo chown www-data:www-data -R /var/www/html/wordpress/
+
+                      ->sudo chmod -R 755 /var/www/html/wordpress/
+
+Create a configuration file for WordPress-> sudo nano /etc/apache2/sites-available/wordpress.conf
+
